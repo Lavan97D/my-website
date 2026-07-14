@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K. Lavan | Professional Creative Developer & Designer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Mukta+Malar:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPurple: '#8B5CF6',
+                        brandBlue: '#3B82F6',
+                        darkBg: '#0B0F19',
+                        darkCard: '#151D30',
+                        neonPurple: '#A78BFA',
+                        neonBlue: '#60A5FA'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Mukta Malar', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Glowing Background & Scrollbar Animations */
+        body {
+            background-color: #05070F;
+            overflow-x: hidden;
+        }
+        
+        .glowing-blob {
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        /* Custom active animation for services */
+        .service-active {
+            border-color: #8B5CF6 !important;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%) !important;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+            transform: translateY(-4px);
+        }
+
+        /* Image viewer scale-up animation */
+        .gallery-active {
+            animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Calculator Keys Styling */
+        .calc-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+        .calc-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+        .calc-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen flex flex-col font-sans selection:bg-brandPurple selection:text-white">
+
+    <!-- Glowing Background Decorative Blobs -->
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brandPurple rounded-full glowing-blob"></div>
+    <div class="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-brandBlue rounded-full glowing-blob"></div>
+    <div class="absolute bottom-10 left-1/3 w-[450px] h-[450px] bg-brandPurple rounded-full glowing-blob"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brandPurple to-brandBlue flex items-center justify-center font-bold text-xl shadow-lg shadow-brandPurple/30">
+                    KL
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-wider text-white">K. LAVAN</span>
+                    <p class="text-[10px] text-brandPurple uppercase font-semibold tracking-widest leading-none">Creative Pro</p>
+                </div>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <ul class="flex items-center bg-gray-900/50 p-1.5 rounded-full border border-gray-800/80">
+                <li>
+                    <button onclick="switchTab('home')" id="tab-home" class="px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 bg-gradient-to-r from-brandPurple to-brandBlue text-white shadow-md">
+                        <i class="fa-solid fa-house mr-2"></i>Home
+                    </button>
+                </li>
+                <li>
+                    <button onclick="switchTab('services')" id="tab-services" class="px-5 py-2 rounded-full font-medium text-sm text-gray-400 hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-gears mr-2"></i>Services & Work
+                    </button>
+                </li>
+                <li>
+                    <button onclick="switchTab('contact')" id="tab-contact" class="px-5 py-2 rounded-full font-medium text-sm text-gray-400 hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-paper-plane mr-2"></i>Contact
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN BODY -->
+    <main class="flex-grow pt-28 pb-12 px-4 md:px-8 max-w-6xl mx-auto w-full z-10">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="tab-content block animate-fade-in">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12 py-8">
+                <!-- Left text panel -->
+                <div class="flex-1 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brandPurple/10 border border-brandPurple/30 text-neonPurple text-xs font-semibold tracking-wider uppercase mb-2">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> Open to New Projects
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                        வணக்கம், நான் <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-neonPurple to-neonBlue font-extrabold">K. LAVAN</span>
+                    </h1>
+                    <p class="text-gray-300 text-lg max-w-xl leading-relaxed">
+                        அதிநவீன மொபைல் செயலிகள், நேர்த்தியான இணையதளங்கள் மற்றும் கவர்ச்சிகரமான கிராபிக்ஸ் டிசைன்களை உங்கள் எண்ணங்களுக்கு ஏற்ப உயிர்ப்புடன் உருவாக்கித் தருகிறேன். 
+                    </p>
+                    <p class="text-gray-400 text-sm italic max-w-xl">
+                        "Transforming complex ideas into polished digital masterworks. If you can envision it, I can build and design it to perfection."
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="switchTab('services')" class="px-6 py-3 bg-gradient-to-r from-brandPurple to-brandBlue hover:from-brandPurple/95 hover:to-brandBlue/95 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-brandPurple/30 transform hover:-translate-y-0.5">
+                            எனது சேவைகள் <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                        <button onclick="switchTab('contact')" class="px-6 py-3 bg-gray-900 border border-gray-800 hover:border-brandPurple/50 hover:bg-gray-800/80 text-gray-300 hover:text-white font-semibold rounded-xl transition-all duration-300">
+                            தொடர்பு கொள்ள
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right avatar graphic -->
+                <div class="flex-1 flex justify-center items-center">
+                    <div class="relative group">
+                        <!-- Outer Glow Effect -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brandPurple to-brandBlue rounded-3xl blur-md opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        <!-- Picture Container -->
+                        <div class="relative w-[320px] md:w-[420px] bg-darkCard p-3 rounded-3xl border border-gray-800 shadow-2xl">
+                            <!-- Verbatim reference to user file -->
+                            <img src="ChatGPT Image Feb 8, 2026, 08_38_55 PM.png" alt="K. Lavan Avatar" class="w-full h-auto rounded-2xl object-cover" onerror="this.src='https://placehold.co/600x400/8B5CF6/ffffff?text=K.+Lavan+Portfolio'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust highlights -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-darkCard/50 border border-gray-800/60 text-center">
+                <div>
+                    <h3 class="text-3xl font-extrabold text-neonPurple">100%</h3>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">நேர்த்தி & தரம் (Quality)</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-neonBlue">On-Time</h3>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">நேரக் கட்டுப்பாடு (Punctual)</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-neonPurple">Modern</h3>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">அதிநவீன தொழில்நுட்பம்</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-extrabold text-neonBlue">Friendly</h3>
+                    <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">நம்பகமான ஆதரவு</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 2: SERVICES & PORTFOLIO ================= -->
+        <section id="page-services" class="tab-content hidden animate-fade-in">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">எனது பிரத்தியேக சேவைகள்</h2>
+                <p class="text-gray-300 text-sm md:text-base">
+                    கீழே உள்ள ஏதேனும் ஒரு சேவையின் மீது தொட்டு (Click), அதற்கான மாதிரிப் படங்கள் மற்றும் விரிவான விபரங்களைக் கீழே காணலாம்.
+                </p>
+                <p class="text-neonBlue text-xs font-semibold uppercase tracking-wider mt-2">
+                    <i class="fa-solid fa-hand-pointer mr-1.5 animate-bounce"></i> Click any service card to view interactive portfolio references
+                </p>
+            </div>
+
+            <!-- Dynamic Interactive Services Selector Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+                
+                <!-- Service 1: App Developing -->
+                <button onclick="showPortfolio('app')" id="btn-app" class="service-card-btn text-left p-5 rounded-2xl bg-darkCard border border-gray-800 hover:border-brandPurple/60 transition-all duration-300 flex flex-col justify-between h-56 group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brandPurple flex items-center justify-center text-xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-lg font-bold text-white group-hover:text-neonPurple transition">App Developing</h3>
+                        <p class="text-xs text-gray-400 mt-1 font-semibold">மொபைல் செயலிகள்</p>
+                    </div>
+                </button>
+
+                <!-- Service 2: Web Pages Design -->
+                <button onclick="showPortfolio('web')" id="btn-web" class="service-card-btn text-left p-5 rounded-2xl bg-darkCard border border-gray-800 hover:border-brandPurple/60 transition-all duration-300 flex flex-col justify-between h-56 group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-brandBlue flex items-center justify-center text-xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-lg font-bold text-white group-hover:text-neonBlue transition">Web Design</h3>
+                        <p class="text-xs text-gray-400 mt-1 font-semibold">வலைத்தள வடிவமைப்பு</p>
+                    </div>
+                </button>
+
+                <!-- Service 3: Logo Create -->
+                <button onclick="showPortfolio('logo')" id="btn-logo" class="service-card-btn text-left p-5 rounded-2xl bg-darkCard border border-gray-800 hover:border-brandPurple/60 transition-all duration-300 flex flex-col justify-between h-56 group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brandPurple flex items-center justify-center text-xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-lg font-bold text-white group-hover:text-neonPurple transition">Logo Create</h3>
+                        <p class="text-xs text-gray-400 mt-1 font-semibold">சின்னங்கள் உருவாக்கம்</p>
+                    </div>
+                </button>
+
+                <!-- Service 4: Poster Design -->
+                <button onclick="showPortfolio('poster')" id="btn-poster" class="service-card-btn text-left p-5 rounded-2xl bg-darkCard border border-gray-800 hover:border-brandPurple/60 transition-all duration-300 flex flex-col justify-between h-56 group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-brandBlue flex items-center justify-center text-xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-lg font-bold text-white group-hover:text-neonBlue transition">Poster Design</h3>
+                        <p class="text-xs text-gray-400 mt-1 font-semibold">சுவரொட்டி வடிவமைப்பு</p>
+                    </div>
+                </button>
+
+                <!-- Service 5: Graphics Works -->
+                <button onclick="showPortfolio('graphics')" id="btn-graphics" class="service-card-btn text-left p-5 rounded-2xl bg-darkCard border border-gray-800 hover:border-brandPurple/60 transition-all duration-300 flex flex-col justify-between h-56 group">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-brandPurple flex items-center justify-center text-xl group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-bezier-curve"></i>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-lg font-bold text-white group-hover:text-neonPurple transition">Graphics Works</h3>
+                        <p class="text-xs text-gray-400 mt-1 font-semibold">கிராபிக்ஸ் கலைகள்</p>
+                    </div>
+                </button>
+
+            </div>
+
+            <!-- PORTFOLIO DISPLAY AREA (DYNAMICALLY SHOWN UNDERNEATH) -->
+            <div id="portfolio-display-box" class="bg-darkCard p-6 md:p-8 rounded-3xl border border-gray-800 gallery-active mb-12">
+                <div class="flex flex-col lg:flex-row gap-8 items-center">
+                    
+                    <!-- Showcase Image Box -->
+                    <div class="w-full lg:w-1/2 flex justify-center">
+                        <div class="relative w-full max-w-md h-72 md:h-80 rounded-2xl overflow-hidden border border-gray-700/50 shadow-xl group">
+                            <img id="portfolio-img" src="http://googleusercontent.com/image_collection/image_retrieval/10558338867526054603_0" alt="Showcase reference image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-4 right-4 bg-gray-950/80 px-3 py-1.5 rounded-lg text-xs font-semibold border border-gray-800">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Reference Mockup
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text description info panel -->
+                    <div class="w-full lg:w-1/2 space-y-4">
+                        <h4 id="portfolio-title-ta" class="text-2xl font-bold text-neonPurple">App Developing (மொபைல் ஆப் உருவாக்கம்)</h4>
+                        <p id="portfolio-desc-ta" class="text-gray-200 leading-relaxed text-sm md:text-base">
+                            உங்களின் வர்த்தகம் மற்றும் தேவைகளுக்கான அதிநவீன ஆண்ட்ராய்டு & iOS மொபைல் செயலிகள் மிகச்சிறந்த பயனர் அனுபவத்துடன் (UI/UX) நேர்த்தியாக உருவாக்கித் தரப்படும்.
+                        </p>
+                        
+                        <!-- Separator line -->
+                        <div class="border-t border-gray-800 py-1"></div>
+
+                        <h4 id="portfolio-title-en" class="text-lg font-semibold text-neonBlue">Mobile App Development</h4>
+                        <p id="portfolio-desc-en" class="text-gray-400 italic text-sm">
+                            Designing and developing highly robust, feature-rich native and cross-platform applications customized precisely to scale up your brand values and functionalities.
+                        </p>
+                        
+                        <div class="pt-2">
+                            <span class="inline-flex items-center gap-1.5 text-xs text-brandPurple bg-brandPurple/10 px-3 py-1 rounded-full font-semibold border border-brandPurple/20">
+                                <i class="fa-solid fa-certificate"></i> Verified Work Concept
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ================= NEW INTERACTIVE UTILITY: SMART CALCULATOR ================= -->
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-darkCard to-gray-950 p-6 md:p-8 rounded-3xl border border-gray-800 shadow-2xl mb-12">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <!-- Calculator Description -->
+                    <div class="flex-1 space-y-4">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brandBlue/10 border border-brandBlue/30 text-neonBlue text-xs font-semibold tracking-wider uppercase">
+                            <i class="fa-solid fa-calculator"></i> Client Budget tool & utility
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">பயனர் கணக்கீட்டுப் பலகை (Interactive Smart Calculator)</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            உங்கள் திட்டங்களுக்குரிய உத்தேச வரவுசெலவு மற்றும் எளிய கணக்கீடுகளை விரைவாகச் செய்துகொள்ள பார்வையாளர்கள் இந்த கால்குலேட்டரைப் பயன்படுத்தலாம்.
+                        </p>
+                        <p class="text-gray-400 text-xs italic">
+                            "An interactive tool for quick estimations and budget tallies. Designed seamlessly within the workspace."
+                        </p>
+                    </div>
+                    
+                    <!-- Interactive Calculator Widget UI -->
+                    <div class="w-full max-w-[280px] bg-gray-950 p-4 rounded-2xl border border-gray-800 shadow-inner">
+                        <!-- Screen Display -->
+                        <div class="mb-4">
+                            <input type="text" id="calc-screen" readonly class="w-full bg-gray-900 border border-gray-800 text-right px-3 py-4 text-xl font-bold font-mono text-emerald-400 rounded-xl focus:outline-none placeholder-gray-700" placeholder="0">
+                        </div>
+                        <!-- Keypad Grid -->
+                        <div class="grid grid-cols-4 gap-2">
+                            <!-- Row 1 -->
+                            <button onclick="clearCalc()" class="calc-btn py-3 rounded-lg text-rose-400 font-bold text-sm">C</button>
+                            <button onclick="appendCalc('/')" class="calc-btn py-3 rounded-lg text-brandBlue font-bold text-sm">/</button>
+                            <button onclick="appendCalc('*')" class="calc-btn py-3 rounded-lg text-brandBlue font-bold text-sm">*</button>
+                            <button onclick="deleteCalcLast()" class="calc-btn py-3 rounded-lg text-gray-400 font-bold text-sm"><i class="fa-solid fa-delete-left"></i></button>
+                            
+                            <!-- Row 2 -->
+                            <button onclick="appendCalc('7')" class="calc-btn py-3 rounded-lg text-white font-semibold">7</button>
+                            <button onclick="appendCalc('8')" class="calc-btn py-3 rounded-lg text-white font-semibold">8</button>
+                            <button onclick="appendCalc('9')" class="calc-btn py-3 rounded-lg text-white font-semibold">9</button>
+                            <button onclick="appendCalc('-')" class="calc-btn py-3 rounded-lg text-brandBlue font-bold text-lg">-</button>
+                            
+                            <!-- Row 3 -->
+                            <button onclick="appendCalc('4')" class="calc-btn py-3 rounded-lg text-white font-semibold">4</button>
+                            <button onclick="appendCalc('5')" class="calc-btn py-3 rounded-lg text-white font-semibold">5</button>
+                            <button onclick="appendCalc('6')" class="calc-btn py-3 rounded-lg text-white font-semibold">6</button>
+                            <button onclick="appendCalc('+')" class="calc-btn py-3 rounded-lg text-brandBlue font-bold text-lg">+</button>
+                            
+                            <!-- Row 4 -->
+                            <div class="col-span-3 grid grid-cols-3 gap-2">
+                                <button onclick="appendCalc('1')" class="calc-btn py-3 rounded-lg text-white font-semibold">1</button>
+                                <button onclick="appendCalc('2')" class="calc-btn py-3 rounded-lg text-white font-semibold">2</button>
+                                <button onclick="appendCalc('3')" class="calc-btn py-3 rounded-lg text-white font-semibold">3</button>
+                                <button onclick="appendCalc('0')" class="col-span-2 calc-btn py-3 rounded-lg text-white font-semibold">0</button>
+                                <button onclick="appendCalc('.')" class="calc-btn py-3 rounded-lg text-white font-semibold">.</button>
+                            </div>
+                            <button onclick="calculateResult()" class="calc-btn py-3 rounded-lg bg-gradient-to-b from-brandPurple to-brandBlue text-white font-bold text-lg flex items-center justify-center">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Commitments & Catchy Taglines requested by user -->
+            <div class="bg-gradient-to-r from-brandPurple/15 to-brandBlue/15 rounded-3xl p-6 md:p-8 border border-brandPurple/20 text-center space-y-4">
+                <span class="text-2xl">💫</span>
+                <p class="text-lg md:text-xl font-bold text-white max-w-3xl mx-auto leading-relaxed">
+                    "மேற்கூறப்பட்ட அனைத்து வசதிகளும் உங்கள் விருப்பத்திற்கும் தேவைக்கும் ஏற்ப மிகவும் நேர்த்தியாகவும், நவீன தொழில்நுட்பத்துடனும் குறித்த காலத்திற்குள் செய்து தரப்படும்."
+                </p>
+                <div class="w-12 h-0.5 bg-gradient-to-r from-brandPurple to-brandBlue mx-auto my-3"></div>
+                <p class="text-gray-400 italic max-w-2xl mx-auto text-sm md:text-base">
+                    "Every digital asset, application, and design concept is built with outstanding visual harmony, extreme neatness, and flawless execution to give you the perfect competitive advantage."
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ================= PAGE 3: CONTACT ================= -->
+        <section id="page-contact" class="tab-content hidden animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Contact Details -->
+                <div class="bg-darkCard p-6 md:p-10 rounded-3xl border border-gray-800 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-brandPurple text-xs font-semibold tracking-widest uppercase">Let's Connect</span>
+                            <h2 class="text-3xl font-extrabold text-white mt-1">என்னைத் தொடர்பு கொள்ள</h2>
+                        </div>
+                        <p class="text-gray-300 text-sm md:text-base leading-relaxed">
+                            உங்கள் புதிய டிஜிட்டல் திட்டங்களை அடுத்த கட்டத்திற்கு எடுத்துச் செல்லத் தயாரா? என்னை இப்போதே தொடர்பு கொள்ளவும். நான் உங்களுக்கு உதவக் காத்திருக்கிறேன்!
+                        </p>
+                        
+                        <div class="space-y-4 pt-4">
+                            <!-- Email address -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-brandPurple flex items-center justify-center text-lg shrink-0 border border-brandPurple/20">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium uppercase">Email Address</p>
+                                    <a href="mailto:lavanlion2000@gmail.com" class="text-white hover:text-neonPurple text-sm font-semibold transition">lavanlion2000@gmail.com</a>
+                                </div>
+                            </div>
+                            <!-- Phone -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-brandBlue flex items-center justify-center text-lg shrink-0 border border-brandBlue/20">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium uppercase">Phone Number</p>
+                                    <a href="tel:0759975003" class="text-white hover:text-neonBlue text-sm font-semibold transition">0759975003</a>
+                                </div>
+                            </div>
+                            <!-- Location address -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/10 text-brandPurple flex items-center justify-center text-lg shrink-0 border border-brandPurple/20">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium uppercase">Location Address</p>
+                                    <p class="text-white text-sm font-semibold">Podiyar Road, Puthukkudiyiruppu- 05, Batticaloa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative footer banner -->
+                    <div class="mt-8 pt-6 border-t border-gray-800 flex gap-4 text-gray-400 text-sm">
+                        <span><i class="fa-solid fa-location-arrow text-brandBlue mr-1"></i> Batticaloa, Sri Lanka</span>
+                        <span>|</span>
+                        <span><i class="fa-solid fa-clock text-brandPurple mr-1"></i> Fast Turnaround</span>
+                    </div>
+                </div>
+
+                <!-- Contact Message Form -->
+                <div class="bg-darkCard p-6 md:p-10 rounded-3xl border border-gray-800 flex flex-col justify-center">
+                    <h3 class="text-xl font-bold text-white mb-6">செய்தி அனுப்பவும் (Leave a Message)</h3>
+                    
+                    <form onsubmit="event.preventDefault(); alert('நன்றி லவன்! செய்தி வெற்றிகரமாக அனுப்பப்பட்டது (Demo Action).');" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase mb-1">Your Name / உங்கள் பெயர்</label>
+                            <input type="text" placeholder="உதாரணம்: கவின்" required class="w-full bg-gray-950/80 border border-gray-800 focus:border-brandPurple focus:ring-1 focus:ring-brandPurple rounded-xl px-4 py-3 text-sm text-white transition outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase mb-1">Email / மின்னஞ்சல்</label>
+                            <input type="email" placeholder="example@gmail.com" required class="w-full bg-gray-950/80 border border-gray-800 focus:border-brandPurple focus:ring-1 focus:ring-brandPurple rounded-xl px-4 py-3 text-sm text-white transition outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase mb-1">Your Message / செய்தி விபரம்</label>
+                            <textarea rows="4" placeholder="உங்கள் தேவை அல்லது திட்டத்தைப் பற்றி சுருக்கமாக குறிப்பிடவும்..." required class="w-full bg-gray-950/80 border border-gray-800 focus:border-brandPurple focus:ring-1 focus:ring-brandPurple rounded-xl px-4 py-3 text-sm text-white transition outline-none resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-3.5 px-6 bg-gradient-to-r from-brandPurple to-brandBlue hover:opacity-95 text-white font-semibold rounded-xl transition duration-300 shadow-md shadow-brandPurple/10">
+                            அனுப்புக (Send Message) <i class="fa-solid fa-paper-plane ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-gray-900 bg-gray-950/50 backdrop-blur-md z-10">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <p>&copy; 2026 K. Lavan. All Rights Reserved. Designed & Developed Professionally.</p>
+            <div class="flex gap-4">
+                <a href="mailto:lavanlion2000@gmail.com" class="hover:text-neonPurple transition"><i class="fa-solid fa-envelope mr-1"></i>Email</a>
+                <a href="tel:0759975003" class="hover:text-neonBlue transition"><i class="fa-solid fa-phone mr-1"></i>Call</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE PORTFOLIO & NAVIGATION JAVASCRIPT -->
+    <script>
+        // Multi-page navigation tab logic
+        function switchTab(tabId) {
+            // Hide all tab screens
+            const screens = document.querySelectorAll('.tab-content');
+            screens.forEach(screen => {
+                screen.classList.add('hidden');
+            });
+
+            // Show target screen
+            document.getElementById('page-' + tabId).classList.remove('hidden');
+
+            // Reset navbar button styles
+            const tabs = ['home', 'services', 'contact'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-' + t);
+                if(btn) {
+                    btn.className = "px-5 py-2 rounded-full font-medium text-sm text-gray-400 hover:text-white transition-all duration-300";
+                }
+            });
+
+            // Set current tab as active style (glowing gradient)
+            const activeBtn = document.getElementById('tab-' + tabId);
+            if(activeBtn) {
+                activeBtn.className = "px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 bg-gradient-to-r from-brandPurple to-brandBlue text-white shadow-md shadow-brandPurple/15";
+            }
+            
+            // Scroll smoothly to top when switching
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Object containing interactive showcase contents (Image references and descriptions)
+        const portfolioData = {
+            app: {
+                titleTa: "App Developing (மொபைல் ஆப் உருவாக்கம்)",
+                descTa: "உங்களின் வர்த்தகம் மற்றும் சொந்தத் தேவைகளுக்கான அதிநவீன ஆண்ட்ராய்டு (Android) & iOS மொபைல் செயலிகள் மிகச்சிறந்த வடிவமைப்பில் நேர்த்தியாக உருவாக்கப்படும்.",
+                titleEn: "Mobile Application Development",
+                descEn: "Crafting highly responsive, secure, and state-of-the-art Android & iOS mobile applications with stunning user interfaces (UI/UX) and smooth, high-speed performance.",
+                imgUrl: "http://googleusercontent.com/image_collection/image_retrieval/10558338867526054603_0"
+            },
+            web: {
+                titleTa: "Web Pages Design (வலைத்தள வடிவமைப்பு)",
+                descTa: "அதிவேகமாக இயங்கும், மொபைல் மற்றும் கணினிகளுக்கு ஏற்ற (Fully Responsive), நேர்த்தியான மற்றும் நவீன உலகத்தரம் வாய்ந்த இணையதளங்கள் வடிவமைக்கப்படும்.",
+                titleEn: "High-Performance Web Design",
+                descEn: "Designing highly functional, lightning-fast, and completely responsive landing pages and portals structured perfectly to attract and engage customers.",
+                imgUrl: "http://googleusercontent.com/image_collection/image_retrieval/10558338867526054603_1"
+            },
+            logo: {
+                titleTa: "Logo Create (பிராண்ட் லோகோக்கள்)",
+                descTa: "உங்கள் தனிப்பட்ட முகவரி அல்லது வர்த்தக நிறுவனத்தின் கம்பீரத்தை வெளிப்படுத்தும் தனித்துவமான (Unique Logo) மற்றும் மிக கவர்ச்சிகரமான லோகோக்கள் உருவாக்கப்படும்.",
+                titleEn: "Creative Branding & Logo Crafting",
+                descEn: "Developing iconic, modern, and memorable custom brand symbols that capture attention and represent your identity with maximum professionalism.",
+                imgUrl: "http://googleusercontent.com/image_collection/image_retrieval/10558338867526054603_2"
+            },
+            poster: {
+                titleTa: "Poster Design (சுவரொட்டி வடிவமைப்பு)",
+                descTa: "விளம்பரங்கள், சமூக ஊடகப் பதிவுகள் (Social Media Posts) மற்றும் விசேட நிகழ்வுகளுக்கான கண்கவர் மற்றும் நேர்த்தியான போஸ்டர் டிசைன்கள் உருவாக்கப்படும்.",
+                titleEn: "Eye-Catching Poster Design",
+                descEn: "Formulating visually powerful and balanced posters for marketing campaigns, announcements, and digital social spaces to drive maximum conversion and look pristine.",
+                imgUrl: "http://googleusercontent.com/image_collection/image_retrieval/10558338867526054603_3"
+            },
+            graphics: {
+                titleTa: "Any Graphics Works (கிராபிக்ஸ் வேலைகள்)",
+                descTa: "பிசினஸ் கார்டுகள், பேனர்கள், மெனு கார்டுகள் மற்றும் அனைத்து விதமான டிஜிட்டல் கிராபிக்ஸ் கலை வடிவமைப்பு வேலைகளும் மிகச் சிறந்த முறையில் பூர்த்தி செய்யப்படும்.",
+                titleEn: "All-Round Graphic Artistry",
+                descEn: "Covering your entire design requirements including business stationary, custom flyers, digital banners, and vector assets polished to professional grade.",
+                imgUrl: "http://googleusercontent.com/image_collection/image_retrieval/10558338867526054603_4"
+            }
+        };
+
+        // Trigger dynamic portfolio display handler
+        function showPortfolio(category) {
+            // Remove active highlight class from all service cards
+            const cards = document.querySelectorAll('.service-card-btn');
+            cards.forEach(card => card.classList.remove('service-active'));
+
+            // Add active class to clicked card
+            const activeCard = document.getElementById('btn-' + category);
+            if(activeCard) {
+                activeCard.classList.add('service-active');
+            }
+
+            // Apply fade-out / fade-in animation to the viewer content box
+            const displayBox = document.getElementById('portfolio-display-box');
+            if(displayBox) {
+                displayBox.classList.remove('gallery-active');
+                void displayBox.offsetWidth; // Force CSS reflow to re-trigger animation
+                displayBox.classList.add('gallery-active');
+            }
+
+            // Update DOM content dynamically based on selected index
+            const data = portfolioData[category];
+            if(data) {
+                document.getElementById('portfolio-img').src = data.imgUrl;
+                document.getElementById('portfolio-title-ta').innerText = data.titleTa;
+                document.getElementById('portfolio-desc-ta').innerText = data.descTa;
+                document.getElementById('portfolio-title-en').innerText = data.titleEn;
+                document.getElementById('portfolio-desc-en').innerText = data.descEn;
+            }
+        }
+
+        // ================= CALCULATOR LOGIC =================
+        const calcScreen = document.getElementById('calc-screen');
+        
+        function appendCalc(val) {
+            if (calcScreen.value === '0' || calcScreen.value === 'Error') {
+                calcScreen.value = val;
+            } else {
+                calcScreen.value += val;
+            }
+        }
+
+        function clearCalc() {
+            calcScreen.value = '';
+        }
+
+        function deleteCalcLast() {
+            if (calcScreen.value === 'Error') {
+                calcScreen.value = '';
+            } else {
+                calcScreen.value = calcScreen.value.slice(0, -1);
+            }
+        }
+
+        function calculateResult() {
+            try {
+                // Safely evaluate basic math expressions
+                const expr = calcScreen.value;
+                if (!expr) return;
+                
+                // Allow only numbers, decimals, and basic math signs (+, -, *, /)
+                if (/^[0-9.+\-*/\s]+$/.test(expr)) {
+                    const result = Function('"use strict"; return (' + expr + ')')();
+                    calcScreen.value = Number(result.toFixed(4)); // Limit to 4 decimal places
+                } else {
+                    calcScreen.value = 'Error';
+                }
+            } catch (err) {
+                calcScreen.value = 'Error';
+            }
+        }
+
+        // Initialize display with App Development category pre-loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            showPortfolio('app');
+        });
+    </script>
+</body>
+</html>
